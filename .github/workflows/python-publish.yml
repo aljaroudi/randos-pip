@@ -12,6 +12,9 @@ on:
         default: 'none'
   release:
     types: [created]
+  push:
+    paths:
+      - 'setup.py'
 
 jobs:
   deploy:
