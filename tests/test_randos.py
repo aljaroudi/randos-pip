@@ -11,7 +11,7 @@ def test_random_ints(length, minimum, maximum):
     # correct min?
     assert min(output) >= minimum
     # correct max?
-    assert max(output) < maximum
+    assert max(output) <= maximum
 
 
 def test_random_city():
