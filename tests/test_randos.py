@@ -3,7 +3,7 @@ from pytest import mark
 from random import choice
 
 
-@mark.parametrize('length,minimum,maximum', [(10, 7, 95), (145, 53, 483)])
+@mark.parametrize('length,minimum,maximum', [(randint(1, 999), randint(0, 999), randint(0, 999)) for _ in range(1000)])
 def test_random_ints(length: int, minimum: int, maximum: int):
     output = random_ints(length, minimum, maximum)
     # correct length?
