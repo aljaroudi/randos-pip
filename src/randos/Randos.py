@@ -31,7 +31,7 @@ def random_ints(length: int, minimum: int = 0, maximum: int = 100):
     try:
         return [randint(minimum, maximum) for _ in range(length)]
     except ValueError:
-        raise ValueError('maximum cannot be lower than minimum')
+        raise ValueError(f'maximum ({maximum}) cannot be lower than minimum ({minimum})')
 
 
 def random_line(file_name: str, separator: str = None, number_of_lines: int = None):
@@ -42,17 +42,25 @@ def random_line(file_name: str, separator: str = None, number_of_lines: int = No
         separator (str, optional): Specify to split the line. Defaults to None.
         number_of_lines (int, optional): Number of lines in the file. Defaults to None.
 
+    Raises:
+        ValueError: If maximum < minimum
+
     Returns:
         str or tuple[str,]: a random line's value
     """
-    if not number_of_lines:
-        number_of_lines = sum(1 for i in open(file_name, 'rb'))
 
-    random_line_number = randint(0, number_of_lines)
+    try:
+        if not number_of_lines:
+            number_of_lines = sum(1 for i in open(file_name, 'rb'))
 
-    line = getline(file_name, random_line_number).strip()
+        random_line_number = randint(0, number_of_lines)
 
-    return line.split(separator) if separator else line
+        line = getline(file_name, random_line_number).strip()
+
+        return line.split(separator) if separator else line
+
+    except FileNotFoundError:
+        FileNotFoundError(f'random_line() file not found: {file_name}')
 
 
 def random_city(include_country: bool = False):
