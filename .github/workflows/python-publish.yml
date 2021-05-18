@@ -4,6 +4,12 @@
 name: Upload Python Package
 
 on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'title'
+        required: true
+        default: 'none'
   release:
     types: [created]
 
