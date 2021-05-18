@@ -1,2 +1,2 @@
 # randos-pip
-An Python pip package for generating randomness
+A Python pip package for generating randomness

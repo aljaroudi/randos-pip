@@ -10,8 +10,12 @@ on:
         description: 'title'
         required: true
         default: 'none'
+  push:
+    paths:
+      - 'setup.py'
   release:
     types: [created]
+  
 
 jobs:
   deploy:
