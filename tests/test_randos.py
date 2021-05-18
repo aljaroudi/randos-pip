@@ -3,15 +3,25 @@ from pytest import mark
 from random import choice
 
 
-@mark.parametrize('length,minimum,maximum', [(randint(1, 999), randint(0, 999), randint(0, 999)) for _ in range(1000)])
-def test_random_ints(length: int, minimum: int, maximum: int):
-    output = random_ints(length, minimum, maximum)
+@mark.xfail(raises=ValueError)
+@mark.parametrize('length,minimum', [(randint(1, 999), randint(0, 999)) for _ in range(1000)])
+def test_random_ints(length: int, minimum: int):
+
+    output = random_ints(length, minimum, minimum - randint(0, 999))
     # correct length?
     assert len(output) == length
     # correct min?
     assert min(output) >= minimum
-    # correct max?
-    assert max(output) <= maximum
+
+
+@mark.parametrize('length,minimum', [(randint(1, 999), randint(0, 999)) for _ in range(1000)])
+def test_random_ints(length: int, minimum: int):
+
+    output = random_ints(length, minimum, minimum + randint(0, 999))
+    # correct length?
+    assert len(output) == length
+    # correct min?
+    assert min(output) >= minimum
 
 
 @mark.parametrize('include_country', [True, False, None])
