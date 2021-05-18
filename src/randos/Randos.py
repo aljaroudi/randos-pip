@@ -20,14 +20,18 @@ def random_ints(length: int, minimum: int = 0, maximum: int = 100):
         minimum (int, optional): minimum possible value, inclusive. Defaults to 0.
         maximum (int, optional): maximum possible value, inclusive. Defaults to 100.
 
+    Raises:
+        ValueError: If maximum < minimum
+
     Returns:
         list[int]: list of random int values
     """
-    if minimum > maximum:
-        minimum = maximum
-    if not length:
-        length = 1
-    return [randint(minimum, maximum) for _ in range(length)]
+    # make sure length is > 0, default to 1 if not
+    length = length if length > 0 else 1
+    try:
+        return [randint(minimum, maximum) for _ in range(length)]
+    except ValueError:
+        raise ValueError('maximum cannot be lower than minimum')
 
 
 def random_line(file_name: str, separator: str = None, number_of_lines: int = None):
