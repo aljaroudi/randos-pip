@@ -16,7 +16,6 @@ setup(
         'Programming Language :: Python :: 3.7',
         "License :: OSI Approved :: MIT License",
     ],
-    package_dir={"": "src"},
     author='Mohammed Aljaroudi',
     author_email='maljaroudi@sandiego.edu',
     include_package_data=True,
