@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='randos',
     packages=find_packages(),
-    version='0.0.19',
+    version='0.0.20',
     description='A randomness library',
     long_description=long_description,
     long_description_content_type="text/markdown",
