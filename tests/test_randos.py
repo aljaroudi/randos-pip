@@ -1,4 +1,4 @@
-from randos.Randos import *
+from randos.randos import *
 from pytest import mark
 from random import choice
 
