@@ -91,7 +91,7 @@ def random_emoji(include_desc: bool = False):
     Returns:
         str or tuple[str,str]: random emoji
     """
-    emoji, desc = random_line(DATA_FOLDER + 'EMOJIS.txt', ',', 806)
+    emoji, desc = random_line(DATA_FOLDER + 'EMOJIS.txt', ',', 1832)
     return (emoji, desc) if include_desc else emoji
 
 
