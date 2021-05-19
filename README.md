@@ -1,4 +1,4 @@
-# randos-pip
+# randos
 A Python pip package for generating randomness
 
 [![Downloads](https://pepy.tech/badge/randos/month)](#)
