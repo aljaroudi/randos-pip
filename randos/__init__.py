@@ -111,6 +111,3 @@ def random_bool() -> bool:
     """
     return randint(0, 100) % 2 == 0
 
-
-if __name__ == '__main__':
-    print(random_city())
