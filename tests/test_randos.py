@@ -69,3 +69,24 @@ def test_random_emoji(file_path: str):
 def test_random_bool(_):
     output = random_bool()
     assert output is True or output is False
+
+
+@mark.parametrize('include_country', [randint(0, 100) % 2 == 0 for _ in range(1000)])
+def test_random_travel_city(include_country: bool):
+    output = random_travel_city(include_country)
+    # not null?
+    assert output
+    # correct length?
+    assert len(output) == 2 if include_country else len(output)
+    # correct type?
+    assert isinstance(
+        output, tuple) if include_country else isinstance(output, str)
+
+
+@mark.parametrize('_', list(range(10)))
+def test_random_travel_destination(_):
+    output = random_travel_destination()
+    # not null?
+    assert output
+    # has length?
+    assert len(output)

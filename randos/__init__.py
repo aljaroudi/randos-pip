@@ -2,14 +2,7 @@ from __future__ import annotations
 from random import randint
 from linecache import getline
 
-FILE_CITIES = 'randos/data/CITIES.txt'
-FILE_CITIES_LINES = 1100
-
-FILE_COUNTRIES = 'randos/data/CITIES.txt'
-FILE_COUNTRIES_LINES = 245
-
-FILE_EMOJIS = 'randos/data/EMOJIS.txt'
-FILE_EMOJIS_LINES = 806
+DATA_FOLDER = 'randos/data/'
 
 
 def random_ints(length: int, minimum: int = 0, maximum: int = 100):
@@ -72,8 +65,7 @@ def random_city(include_country: bool = False):
     Returns:
         str or tuple[str,str]: random city name
     """
-    line = random_line(FILE_CITIES, ',', FILE_CITIES_LINES)
-    city, country = line
+    city, country = random_line(DATA_FOLDER + 'CITIES.txt', ',', 1099)
     return (city, country) if include_country else city
 
 
@@ -86,7 +78,7 @@ def random_country(include_abbr: bool = False):
     Returns:
         str or tuple[str,str]: random country name
     """
-    country, abbr = random_line(FILE_COUNTRIES, ',', FILE_COUNTRIES_LINES)
+    country, abbr = random_line(DATA_FOLDER + 'COUNTRIES.txt', ',', 245)
     return (country, abbr) if include_abbr else country
 
 
@@ -99,7 +91,7 @@ def random_emoji(include_desc: bool = False):
     Returns:
         str or tuple[str,str]: random emoji
     """
-    emoji, desc = random_line(FILE_EMOJIS, ',', FILE_EMOJIS_LINES)
+    emoji, desc = random_line(DATA_FOLDER + 'EMOJIS.txt', ',', 806)
     return (emoji, desc) if include_desc else emoji
 
 
@@ -111,3 +103,28 @@ def random_bool() -> bool:
     """
     return randint(0, 100) % 2 == 0
 
+
+def random_travel_city(include_country: bool = False):
+    """Returns the name of one of world's +1,000 largest cities, randomly.
+
+    Args:
+        include_country (bool, optional): Return the country name too. Defaults to False.
+
+    Returns:
+        str or tuple[str,str]: random city name
+    """
+    city, country = random_line(DATA_FOLDER + 'TOURIST_CITIES.txt', ',', 100)
+    return (city, country) if include_country else city
+
+
+def random_travel_destination():
+    """Returns the name of one of world's +1,000 largest cities, randomly.
+
+    Args:
+        include_country (bool, optional): Return the country name too. Defaults to False.
+
+    Returns:
+        str or tuple[str,str]: random city name
+    """
+    place = random_line(DATA_FOLDER + 'TOURIST_CITIES.txt', ',', 100)
+    return place
