@@ -1,6 +1,6 @@
-from randos.randos import *
+from randos import *
 from pytest import mark
-from random import choice
+from random import choice, randint
 
 
 @mark.xfail(raises=ValueError)
@@ -65,6 +65,7 @@ def test_random_emoji(file_path: str):
     assert len(output)
 
 
-def test_random_bool():
+@mark.parametrize('_', list(range(1000)))
+def test_random_bool(_):
     output = random_bool()
     assert output is True or output is False
