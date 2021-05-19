@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='randos',
-    package_dir = {'': 'randos'}
+    package_dir = {'': 'randos'},
     version='0.0.8',
     description='A randomness library',
     long_description=long_description,
