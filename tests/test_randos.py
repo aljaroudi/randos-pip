@@ -83,7 +83,7 @@ def test_random_travel_city(include_country: bool):
         output, tuple) if include_country else isinstance(output, str)
 
 
-@mark.parametrize('_', list(range(10)))
+@mark.parametrize('_', list(range(1000)))
 def test_random_travel_destination(_):
     output = random_travel_destination()
     # not null?
