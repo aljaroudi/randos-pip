@@ -126,5 +126,5 @@ def random_travel_destination():
     Returns:
         str or tuple[str,str]: random city name
     """
-    place = random_line(DATA_FOLDER + 'TOURIST_DESTS.txt'.txt', ',', 100)
+    place = random_line(DATA_FOLDER + 'TOURIST_DESTS.txt', ',', 100)
     return place
