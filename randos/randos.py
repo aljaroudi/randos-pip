@@ -2,13 +2,13 @@ from __future__ import annotations
 from random import randint
 from linecache import getline
 
-FILE_CITIES = 'randos/data/CITIES.txt'
+FILE_CITIES = 'data/CITIES.txt'
 FILE_CITIES_LINES = 1100
 
-FILE_COUNTRIES = 'randos/data/CITIES.txt'
+FILE_COUNTRIES = 'data/CITIES.txt'
 FILE_COUNTRIES_LINES = 245
 
-FILE_EMOJIS = 'randos/data/EMOJIS.txt'
+FILE_EMOJIS = 'data/EMOJIS.txt'
 FILE_EMOJIS_LINES = 806
 
 
