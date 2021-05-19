@@ -2,13 +2,13 @@ from __future__ import annotations
 from random import randint
 from linecache import getline
 
-FILE_CITIES = 'src/randos/data/CITIES.txt'
+FILE_CITIES = 'randos/data/CITIES.txt'
 FILE_CITIES_LINES = 1100
 
-FILE_COUNTRIES = 'src/randos/data/CITIES.txt'
-FILE_COUNTRIES_LINES = 1100
+FILE_COUNTRIES = 'randos/data/CITIES.txt'
+FILE_COUNTRIES_LINES = 245
 
-FILE_EMOJIS = 'src/randos/data/EMOJIS.txt'
+FILE_EMOJIS = 'randos/data/EMOJIS.txt'
 FILE_EMOJIS_LINES = 806
 
 
@@ -20,14 +20,19 @@ def random_ints(length: int, minimum: int = 0, maximum: int = 100):
         minimum (int, optional): minimum possible value, inclusive. Defaults to 0.
         maximum (int, optional): maximum possible value, inclusive. Defaults to 100.
 
+    Raises:
+        ValueError: If maximum < minimum
+
     Returns:
         list[int]: list of random int values
     """
-    if minimum > maximum:
-        minimum = maximum
-    if not length:
-        length = 1
-    return [randint(minimum, maximum) for _ in range(length)]
+    # make sure length is > 0, default to 1 if not
+    length = length if length > 0 else 1
+    try:
+        return [randint(minimum, maximum) for _ in range(length)]
+    except ValueError:
+        raise ValueError(
+            f'maximum ({maximum}) cannot be lower than minimum ({minimum})')
 
 
 def random_line(file_name: str, separator: str = None, number_of_lines: int = None):
@@ -38,17 +43,24 @@ def random_line(file_name: str, separator: str = None, number_of_lines: int = No
         separator (str, optional): Specify to split the line. Defaults to None.
         number_of_lines (int, optional): Number of lines in the file. Defaults to None.
 
+    Raises:
+        ValueError: If maximum < minimum
+
     Returns:
         str or tuple[str,]: a random line's value
     """
-    if not number_of_lines:
-        number_of_lines = sum(1 for i in open(file_name, 'rb'))
 
-    random_line_number = randint(0, number_of_lines)
+    try:
+        if not number_of_lines:
+            number_of_lines = sum(1 for i in open(file_name, 'rb'))
 
-    line = getline(file_name, random_line_number).strip()
+        random_line_number = randint(1, number_of_lines-1)
+        line = getline(file_name, random_line_number).strip()
 
-    return line.split(separator) if separator else line
+        return line.split(separator) if separator else line
+
+    except FileNotFoundError:
+        FileNotFoundError(f'random_line() file not found: {file_name}')
 
 
 def random_city(include_country: bool = False):
