@@ -1,9 +1,8 @@
 # randos
 
 A Python pip package for generating randomness
-
-[![Downloads](https://pepy.tech/badge/randos/month)](#)
 <!-- [![Repo Size](https://img.shields.io/github/repo-size/aljaroudi/randos-pip)](#) -->
+[![Downloads](https://pepy.tech/badge/randos/month)](#)
 [![Python Support](https://img.shields.io/pypi/pyversions/randos)](#)
 [![pip version](https://img.shields.io/pypi/v/randos)](#)
 [![a](https://img.shields.io/github/workflow/status/aljaroudi/randos-pip/Python%20package/main?label=test)](#)
