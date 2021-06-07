@@ -6,7 +6,7 @@ DATA_FOLDER = 'randos/data/'
 
 
 def random_ints(length: int, minimum: int = 0, maximum: int = 100):
-    """Generates a list of random integers
+    """Generates a list of random integers 
 
     Args:
         length (int): number of elements in output list
